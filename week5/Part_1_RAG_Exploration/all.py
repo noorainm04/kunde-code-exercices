@@ -12,8 +12,8 @@ def find_resources(category):
     results = []
 
     for resource in resources:
-        if _______________ and ____________:
-        results._________(resource)
+        if resource["category"] == category and resource["source"] == "KundeCodeResource":
+            results.append(resource)
 
     return results
 
@@ -28,5 +28,5 @@ result = find_resources("food")
 
 # Generation (simulation of AI response)
 # Extra: we want to join the items in the list using a comma to seperate them, how
-print(f"""
+print(f"""Here's your answer {result}
 """)
