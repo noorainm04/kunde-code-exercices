@@ -14,11 +14,14 @@ def find_resources(category):
     for resource in resources:
         if resource["category"] == category and resource["source"] == "KundeCodeResource":
             results.append(resource)
+        if resource["category"] == category and resource["source"] == "KundeCodeResource":
+            results.append(resource)
 
     return results
 
 # Augmented (adding to the promp )
 result = find_resources("food")
+
 # What happens if i ask for a category that my res bank doesnt have? 
 result_list = []
 for r in result:
