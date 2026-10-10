@@ -77,9 +77,22 @@ from typing import Any
 CONTEXT_QUESTIONS = [
     # Write your dictionnaries here. Put a comma after each one.
     # ^ Remember: a string starts and ends with....
-
-  {
-    },
+  {"key": "location", 
+   "question": "What city or town are you in?",
+   "options": ["Ottawa"]},
+    {"key": "preferred_language",
+    "question": "What language do you prefer to use?",
+    "options": ["English", "French", "Sudanese Arabic"]},
+    {"key": "support_type",
+    "question": "What type of support are you looking for?",
+    "options": ["housing", "food", "legal and immigration", "healthcare", "mental health"],
+    "allow_many": True},
+    {"key": "cost_preference",
+    "question": "What is your cost preference for services?",
+    "options": ["free", "low cost", "any cost"]},
+    {"key": "occupation",
+     "question": "What is your occupation?",
+     "options": ["employed", "unemployed", "student", "retired"]}
 ]
 
 
@@ -93,8 +106,8 @@ EXAMPLE_CONTEXT: dict[str, Any] = {
     "location": "Ottawa",
     "preferred_language": "Sudanese Arabic",
     "support_type": ["housing"],
-    "cost_preference": "free_or_low_cost",
-}
+    "cost_preference": "free",
+    "occupation": "unemployed"}
 
 
 # ============================================================
@@ -126,7 +139,23 @@ def build_user_context(answers: dict[str, Any]) -> dict[str, Any]:
     """
     # Delete this  line when you start writing your code: 
     raise NotImplementedError("Complete build_user_context() during the Week 6 lab.")
+def build_user_context(answers: dict[str, Any]) -> dict[str, Any]:
 
+    allowed_keys = [
+        "location",
+        "preferred_language",
+        "support_type",
+        "cost_preference"
+        "occupation"
+    ]
+
+    context = {}
+
+    for key in allowed_keys:
+        if key in answers:
+            context[key] = answers[key]
+
+    return context
 
 # 
 # 
