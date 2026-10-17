@@ -122,11 +122,28 @@ Choose a number from the list. Type Q when you want to quit.
 
 resources = {
     "1": {
-        "name": "Social Housing Registry of Ottawa",
-        "website": "https://housingregistry.ca/",
+        "name": "Muslim Family Services of Ottawa (MFSO)",
+        "website": "https://mfso.ca/",
         "prerequisites": [],
-        "source": "",
-    }, #add your other services here using the same format
+        "source": "https://mfso.ca/mental-health-support/",
+    },
+
+    "2": {
+        "name": "Nisa Foundation - Mental Health Counselling",
+        "website": "https://www.nisafoundation.ca/programs/nisa-mental-health",
+        "prerequisites": [
+            "Complete the online intake form",
+            "Book an appointment with a licensed therapist",
+        ],
+        "source": "https://www.nisafoundation.ca/programs/nisa-mental-health",
+    },
+
+    "3": {
+        "name": "South-East Ottawa Community Health Centre",
+        "website": "https://www.seochc.on.ca/",
+        "prerequisites": [],
+        "source": "https://www.seochc.on.ca/programs-and-services/practical-support-and-counselling/counselling-services/",
+    },
 }
 
 
@@ -147,8 +164,7 @@ def show_resources():
     for number, resource in resources.items():
         # & HINT: you only need to write ONE LINE of code
         # & YOUR CODE GOES HERE (inside the print statement) !!!!
-
-        print()
+        print(f"{number}. {resource['name']}")
 
 
 # ============================================================
@@ -184,7 +200,14 @@ def show_prerequisites(resource):
 
     # & YOUR CODE GOES HERE
     # & Write your if / else code here and remove pass when you're done.
-    pass
+    if resource["prerequisites"]:
+        print("Known prerequisites:")
+        for item in resource["prerequisites"]:
+            print(f"- {item}")
+        if "source" in resource:
+            print(f"Source: {resource['source']}")
+    else:
+        print("No prerequisites are currently listed in our records.")
 
 
 # ============================================================
